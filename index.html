@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Search</title>
+  </head>
+  <body>
+    <input type="text" id="search" placeholder="集字" />
+    <div id="images"></div>
+
+    <script>
+      // JavaScript code here
+      document.getElementById("search").addEventListener("input", function () {
+        var searchTerm = this.value.toLowerCase().trim();
+        var imagesDiv = document.getElementById("images");
+        imagesDiv.innerHTML = ""; // Clear previous results
+
+        if (!searchTerm) return; // Do nothing if no search term
+
+        // Example image URLs based on search term
+        var appleImageUrl = "apple.jpg";
+        var bananaImageUrl = "banana.jpg";
+
+        // Replace with actual image URLs
+        var images = {
+          天: appleImageUrl,
+          地: bananaImageUrl,
+        };
+
+        // Create image elements and add to the page
+        Object.keys(images).forEach(function (key) {
+          if (searchTerm.includes(key)) {
+            var img = document.createElement("img");
+            img.src = images[key];
+            imagesDiv.appendChild(img);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
